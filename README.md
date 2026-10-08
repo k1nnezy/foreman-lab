@@ -1,5 +1,3 @@
-# foreman-lab
-cat > README.md <<'EOF'
 # Foreman Lab
 
 ## Задача
@@ -14,11 +12,10 @@ cat > README.md <<'EOF'
 - `docs/foreman-setup.md` — пошаговая настройка со скриншотами.
 
 ## Воспроизведение
-1. Установить Foreman на Debian/Ubuntu.
+1. Установить Foreman .
 2. Импортировать роль из `ansible/roles/` через Configure > Ansible > Roles > Import.
 3. Создать шаблон из `foreman/templates/ntp_custom_setup.erb`.
 4. Создать Host Group `ntp`, добавить параметр `ntp-server`.
 5. Привязать шаблон и роль к Host Group.
 6. Зарегистрировать хост через Hosts > Register Host.
 7. Запустить роль: Configure > Host Groups > ntp > Actions > Run all Ansible roles.
-EOF
