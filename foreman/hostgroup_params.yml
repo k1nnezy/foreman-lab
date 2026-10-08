@@ -1,0 +1,9 @@
+hostgroup: ntp
+parameters:
+  - name: ntp-server
+    type: string
+    value: foreman.test.com
+ansible_roles:
+  - disable_root_ssh
+templates:
+  provisioning: NTP Custom Setup
