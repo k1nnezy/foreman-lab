@@ -1,0 +1,16 @@
+--
+- name: Disallow SSH authentication as root
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: "PermitRootLogin no"
+    state: present
+    backup: yes
+  notify: restart sshd
+
+- name: Ensure ssh is restarted
+  ansible.builtin.service:
+    name: sshd
+    state: restarted
+
+
