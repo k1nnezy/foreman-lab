@@ -1,0 +1,10 @@
+<% if @host.params['ntp-server'] %>
+  if command -v chronyc >/dev/null 2>&1; then
+    sed -i '/^pool\|^server/d' /etc/chrony.conf
+    echo "server <%= @host.params['ntp-server'] %> iburst" >> /etc/chrony.conf
+    systemctl restart chronyd
+  elif [ -f /etc/systemd/timesyncd.conf ]; then
+    sed -i "s|^#\?NTP=.*|NTP=<%= @host.params['ntp-server'] %>|" /etc/systemd/timesyncd.conf
+    systemctl restart systemd-timesyncd
+  fi
+<% end %>
